@@ -1,33 +1,22 @@
-# Lab work #4
-**Fullstack application on Jakarta EE (JAX-RS) & Angular, game to find the coordinates of hitting a specific area.**  
-Jakarta EE 10, JAX-RS (REST API), JPA, Security (WildFly Elytron, JWT), Angular 17, RxJS, TypeScript.
+# HitCheck
 
-**UPDATE:** Check out the backend implementation on Spring Boot + Spring Security [here](https://github.com/foliageh/itmo-web-lab4-back-spring) (API endpoints may differ).
+A full-stack web app where users check whether points on the plane hit a composite area and keep a
+history of their attempts. This repository ties the parts together as git submodules.
 
-<img src="https://github.com/foliageh/itmo-web-lab4/assets/46216950/7900419f-3e09-47db-b441-61c95821d755" alt="image" width="800"><br>
-<img src="https://github.com/foliageh/itmo-web-lab4/assets/46216950/2bd81da9-3928-4270-bc42-c5a75a252ee5" alt="image" width="800">
+<img src="https://github.com/foliageh/itmo-web-lab4/assets/46216950/7900419f-3e09-47db-b441-61c95821d755" alt="HitCheck main page" width="800"><br>
+<img src="https://github.com/foliageh/itmo-web-lab4/assets/46216950/2bd81da9-3928-4270-bc42-c5a75a252ee5" alt="HitCheck login page" width="800">
 
-## Task
-Переписать приложение из предыдущей лабораторной работы с использованием следующих технологий:
-- Уровень back-end должен быть основан на Java EE (необходимо использовать EJB).
-- Уровень front-end должен быть построен на Angular 2+ с использованием набора компонентов PrimeNG
-- Взаимодействие между уровнями back-end и front-end должно быть организовано посредством REST API.
+| Part | Stack |
+|---|---|
+| [hitcheck-web](https://github.com/foliageh/hitcheck-web) | Angular 17, TypeScript, RxJS, PrimeNG |
+| [hitcheck-api](https://github.com/foliageh/hitcheck-api) | Spring Boot 3, Spring Security 6, JWT, JPA, PostgreSQL |
+| [hitcheck-api-jakarta](https://github.com/foliageh/hitcheck-api-jakarta) | Jakarta EE 10, JAX-RS, EJB, WildFly Elytron with JWT, PostgreSQL |
 
-Приложение по-прежнему должно включать в себя 2 страницы - стартовую и основную страницу приложения. Обе страницы приложения должны быть адаптированы для отображения в 3 режимах:
-- "Десктопный" - для устройств, ширина экрана которых равна или превышает 1032 пикселей.
-- "Планшетный" - для устройств, ширина экрана которых равна или превышает 876, но меньше 1032 пикселей.
-- "Мобильный"- для устройств, ширина экрана которых меньше 876 пикселей.
+Both backends expose the same API, so the frontend runs on either of them.
 
-Стартовая страница должна содержать следующие элементы:
-- "Шапку", содержащую ФИО студента, номер группы и номер варианта.
-- Форму для ввода логина и пароля. Информация о зарегистрированных в системе пользователях должна храниться в отдельной таблице БД (пароль должен храниться в виде хэш-суммы). Доступ неавторизованных пользователей к основной странице приложения должен быть запрещён.
+```bash
+git clone --recurse-submodules https://github.com/foliageh/hitcheck
+```
 
-Основная страница приложения должна содержать следующие элементы:
-- Набор полей ввода для задания координат точки и радиуса области в соответствии с вариантом задания: Checkbox {'-4','-3','-2','-1','0','1','2','3','4'} для координаты по оси X, Text (-3 ... 3) для координаты по оси Y, и Checkbox {'-4','-3','-2','-1','0','1','2','3','4'} для задания радиуса области. Если поле ввода допускает ввод заведомо некорректных данных (таких, например, как буквы в координатах точки или отрицательный радиус), то приложение должно осуществлять их валидацию.
-- Динамически обновляемую картинку, изображающую область на координатной плоскости в соответствии с номером варианта и точки, координаты которых были заданы пользователем. Клик по картинке должен инициировать сценарий, осуществляющий определение координат новой точки и отправку их на сервер для проверки её попадания в область. Цвет точек должен зависить от факта попадания / непопадания в область. Смена радиуса также должна инициировать перерисовку картинки.
-- Таблицу со списком результатов предыдущих проверок.
-- Ссылку, по которой аутентифицированный пользователь может закрыть свою сессию и вернуться на стартовую страницу приложения.
-
-Дополнительные требования к приложению:
-- Все результаты проверки должны сохраняться в базе данных под управлением СУБД PostgreSQL.
-- Для доступа к БД необходимо использовать JPA.
+---
+Built as coursework for the Web Programming course at ITMO University, 2023–2024.
