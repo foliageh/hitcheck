@@ -1,9 +1,9 @@
 [submodule "itmo-web-lab4-back"]
 	path = itmo-web-lab4-back
-	url = https://github.com/foliageh/itmo-web-lab4-back.git
+	url = https://github.com/foliageh/hitcheck-api-jakarta.git
 [submodule "itmo-web-lab4-front"]
 	path = itmo-web-lab4-front
-	url = https://github.com/foliageh/itmo-web-lab4-front.git
+	url = https://github.com/foliageh/hitcheck-web.git
 [submodule "itmo-web-lab4-back-spring"]
 	path = itmo-web-lab4-back-spring
-	url = https://github.com/foliageh/itmo-web-lab4-back-spring.git
+	url = https://github.com/foliageh/hitcheck-api.git
